@@ -19,7 +19,7 @@ jobs:
         run: |
           git clone https://github.com/mattzcarey/code-review-gpt.git ../code-review-gpt
           cd ../code-review-gpt
-          git checkout snyk-fix-eb4380b94626016e9660fa2631216504  # 确保切换到主分支
+          git checkout main  # 确保切换到主分支
           cd -
 
       # Step 3: 设置 Node.js 环境
