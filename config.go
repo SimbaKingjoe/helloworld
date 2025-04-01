@@ -2,5 +2,5 @@ package config
 import "fmt"
 
 func config() {
-    fmt.Println("Hello, World4567!")
+    fmt.Println("Hello, World456799!")
 }
