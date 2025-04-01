@@ -43,3 +43,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 自动提供的 GitHub Token
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GITHUB_REPOSITORY: "SimbaKingjoe/helloworld"
+          BASE_SHA: $(git merge-base origin/main HEAD)
+          GITHUB_SHA: $(git rev-parse HEAD)
