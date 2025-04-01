@@ -8,33 +8,44 @@ jobs:
   review:
     runs-on: ubuntu-latest  # 使用最新的 Ubuntu 环境
     steps:
-      # Step 1: 检出代码
-      - name: Checkout code
+      # Step 1: 检出当前仓库的代码
+      - name: Checkout current repository
         uses: actions/checkout@v3
         with:
           fetch-depth: 0  # 获取完整的 Git 历史记录
 
-      # Step 2: 设置 Node.js 环境
+      # Step 2: 克隆 code-review-gpt 源码
+      - name: Clone code-review-gpt repository
+        run: |
+          git clone https://github.com/mattzcarey/code-review-gpt.git ../code-review-gpt
+          cd ../code-review-gpt
+          git checkout main  # 确保切换到主分支
+
+      # Step 3: 设置 Node.js 环境
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18  # 根据项目需求调整版本
 
-      # Step 3: 安装 Bun
+      # Step 4: 安装 Bun
       - name: Install Bun
         run: curl -fsSL https://bun.sh/install | bash
 
-      # Step 4: 添加 Bun 到 PATH
+      # Step 5: 添加 Bun 到 PATH
       - name: Add Bun to PATH
         run: echo "$HOME/.bun/bin" >> $GITHUB_PATH
 
-      # Step 5: 安装依赖
-      - name: Install dependencies
-        run: bun add code-review-gpt@latest
-      # Step 6: 运行代码审查脚本
+      # Step 6: 安装 code-review-gpt 的依赖
+      - name: Install code-review-gpt dependencies
+        run: |
+          cd ../code-review-gpt
+          bun install
+
+      # Step 7: 运行 code-review-gpt 脚本
       - name: Run Code Review Script
         run: |
-          bun run code-review-gpt review \
+          cd ../code-review-gpt
+          bun run src/index.ts review \
             --reviewType costOptimized \
             --debug \
             --commentPerFile true \
