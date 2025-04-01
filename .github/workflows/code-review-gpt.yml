@@ -41,7 +41,7 @@ jobs:
             --commentPerFile true \
             --ci github
         env:
-          GITHUB_TOKEN: "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"  # 自动提供的 GitHub Token
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}  # 自动提供的 GitHub Token
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GITHUB_REPOSITORY: "SimbaKingjoe/helloworld"
           BASE_SHA: $(git merge-base origin/main HEAD)
