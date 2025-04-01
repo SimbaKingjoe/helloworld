@@ -35,7 +35,7 @@ jobs:
       # Step 6: 运行代码审查脚本
       - name: Run Code Review Script
         run: |
-          bun run src/index.ts review \
+          bun run code-review-gpt review \
             --reviewType costOptimized \
             --debug \
             --commentPerFile true \
