@@ -20,6 +20,7 @@ jobs:
           git clone https://github.com/mattzcarey/code-review-gpt.git ../code-review-gpt
           cd ../code-review-gpt
           git checkout main  # 确保切换到主分支
+          cd -
 
       # Step 3: 设置 Node.js 环境
       - name: Set up Node.js
@@ -40,12 +41,12 @@ jobs:
         run: |
           cd ../code-review-gpt
           bun install
+          cd -
 
       # Step 7: 运行 code-review-gpt 脚本
       - name: Run Code Review Script
         run: |
-          cd ../code-review-gpt
-          bun run src/index.ts review \
+          bun run ../code-review-gpt/src/index.ts review \
             --reviewType costOptimized \
             --debug \
             --commentPerFile true \
