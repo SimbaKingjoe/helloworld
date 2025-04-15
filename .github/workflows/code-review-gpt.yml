@@ -49,7 +49,6 @@ jobs:
           bun run ../code-review-gpt/src/index.ts review \
             --reviewType costOptimized \
             --debug \
-            --commentPerFile true \
             --ci github
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}  # 自动提供的 GitHub Token
